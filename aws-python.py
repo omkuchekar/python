@@ -8,6 +8,7 @@ for users in paginator.paginate():
     print(users)
     data = users['Users']
 
+#delete all users
 for user in data:
     ExistUserName = user['UserName']
     print(ExistUserName)
@@ -17,7 +18,7 @@ for user in data:
 
 newUser='omkar';
 
-for i in range(16,17):
+for i in range(0,10):
     if(ExistUserName != newUser+ str(i)):
         # Create user
         response = iam.create_user(
@@ -31,13 +32,11 @@ for i in range(16,17):
             PolicyArn =  'arn:aws:iam::aws:policy/AmazonEC2FullAccess'
         )
 
-#delete all users
-
-    
-    
+#delete specific user
 #iam.delete_user(
  #   UserName = 'IAM_USER_NAME2'
   #  )
 
+#s3 bucket creation
 s3_bucket = boto3.client('s3')
 s3_bucket.create_bucket(Bucket = 'my-s3bucket-fromp-ython')
