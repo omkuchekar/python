@@ -13,7 +13,8 @@ for user in data:
     ExistUserName = user['UserName']
     print(ExistUserName)
     if ExistUserName != 'ec2user':
-        #iam.detach_user_policy(UserName = ExistUserName, PolicyArn =  'arn:aws:iam::aws:policy/AmazonEC2FullAccess')
+        #before deleting user delete any attached policy
+        iam.detach_user_policy(UserName = ExistUserName, PolicyArn =  'arn:aws:iam::aws:policy/AmazonEC2FullAccess')
         iam.delete_user(UserName = ExistUserName)
 
 newUser='omkar';
